@@ -1,6 +1,11 @@
 {
   "name": "Bob",
   "gender": "Female",
-  "productName": ["Blackberry","Nokia Edge"]
+  "productName": ["Blackberry","Nokia Edge"],
+
+  
+  "email": "joe_blogs@webdriveruni.com",
+  "first_name": "Joe",
+  "last_name": "blogs"
   
 }

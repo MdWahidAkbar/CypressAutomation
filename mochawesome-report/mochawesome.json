@@ -1,15 +1,15 @@
 {
   "stats": {
     "suites": 1,
-    "tests": 1,
+    "tests": 2,
     "passes": 1,
     "pending": 0,
-    "failures": 0,
-    "start": "2022-11-08T21:39:49.581Z",
-    "end": "2022-11-08T21:39:56.393Z",
-    "duration": 6812,
-    "testsRegistered": 1,
-    "passPercent": 100,
+    "failures": 1,
+    "start": "2022-11-28T00:33:48.711Z",
+    "end": "2022-11-28T00:33:51.869Z",
+    "duration": 3158,
+    "testsRegistered": 2,
+    "passPercent": 50,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,49 +18,73 @@
   },
   "results": [
     {
-      "uuid": "43817440-0496-4270-8d27-ef0e026713de",
+      "uuid": "5d7fde9f-7f22-44b1-8b77-3fdcbb6b747a",
       "title": "",
-      "fullFile": "cypress\\integration\\examples\\TestDataDriven.js",
-      "file": "cypress\\integration\\examples\\TestDataDriven.js",
+      "fullFile": "cypress\\e2e\\webdriver-uni\\file-upload.js",
+      "file": "cypress\\e2e\\webdriver-uni\\file-upload.js",
       "beforeHooks": [],
       "afterHooks": [],
       "tests": [],
       "suites": [
         {
-          "uuid": "9d9ffc5b-2062-45e5-84de-ff5ddafd9faf",
-          "title": "Frames Test",
+          "uuid": "c52505c7-6c58-4920-aec4-826c47f113d1",
+          "title": "Test File Upload via webdriveruni",
           "fullFile": "",
           "file": "",
           "beforeHooks": [],
           "afterHooks": [],
           "tests": [
             {
-              "title": "Demo Example",
-              "fullTitle": "Frames Test Demo Example",
+              "title": "Upload a file....",
+              "fullTitle": "Test File Upload via webdriveruni Upload a file....",
               "timedOut": null,
-              "duration": 4496,
+              "duration": 771,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"http://www.webdriveruniversity.com\");\ncy.get('#file-upload').invoke('removeAttr', 'target').click({\n  force: true\n}); //for this you have to put the file in fixture folder. Pls see the below PATH\ncy.get(\"#myFile\").selectFile(\"cypress/fixtures/laptop.png\");\ncy.get(\"#submit-button\").click();",
+              "err": {
+                "message": "CypressError: `cy.selectFile(\"cypress/fixtures/laptop.png\")` failed because the file does not exist at the following path:\n\n`C:\\Users\\Wahid.Akbar\\CypressAutomation\\cypress\\fixtures\\laptop.png`\n\nhttps://on.cypress.io/selectfile",
+                "estack": "CypressError: `cy.selectFile(\"cypress/fixtures/laptop.png\")` failed because the file does not exist at the following path:\n\n`C:\\Users\\Wahid.Akbar\\CypressAutomation\\cypress\\fixtures\\laptop.png`\n\nhttps://on.cypress.io/selectfile\n    at <unknown> (http://www.webdriveruniversity.com/__cypress/runner/cypress_runner.js:136989:78)\n    at tryCatcher (http://www.webdriveruniversity.com/__cypress/runner/cypress_runner.js:11327:23)\n    at Promise._settlePromiseFromHandler (http://www.webdriveruniversity.com/__cypress/runner/cypress_runner.js:9262:31)\n    at Promise._settlePromise (http://www.webdriveruniversity.com/__cypress/runner/cypress_runner.js:9319:18)\n    at Promise._settlePromise0 (http://www.webdriveruniversity.com/__cypress/runner/cypress_runner.js:9364:10)\n    at Promise._settlePromises (http://www.webdriveruniversity.com/__cypress/runner/cypress_runner.js:9440:18)\n    at _drainQueueStep (http://www.webdriveruniversity.com/__cypress/runner/cypress_runner.js:6034:12)\n    at _drainQueue (http://www.webdriveruniversity.com/__cypress/runner/cypress_runner.js:6027:9)\n    at ../../node_modules/bluebird/js/release/async.js.Async._drainQueues (http://www.webdriveruniversity.com/__cypress/runner/cypress_runner.js:6043:5)\n    at Async.drainQueues (http://www.webdriveruniversity.com/__cypress/runner/cypress_runner.js:5913:14)\nFrom Your Spec Code:\n    at Context.eval (webpack:///./cypress/e2e/webdriver-uni/file-upload.js:9:26)",
+                "diff": null
+              },
+              "uuid": "2038ea15-3f4d-407d-a2a5-fb5fc89288e7",
+              "parentUUID": "c52505c7-6c58-4920-aec4-826c47f113d1",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Upload No file...",
+              "fullTitle": "Test File Upload via webdriveruni Upload No file...",
+              "timedOut": null,
+              "duration": 625,
               "state": "passed",
               "speed": "fast",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "cy.visit(\"https://rahulshettyacademy.com/angularpractice/\"); //I am getting data from fixture file. I am using 'this.data' as 'this.data' is available to use everywhere in the test\ncy.get('input[name=\"name\"]:nth-child(2)').type(this.data.name);\ncy.get('select').select(this.data.gender); //validating two way data binding\ncy.get(':nth-child(4) > .ng-untouched').should('have.value', this.data.name); //Validating property minlenth is 2 (Minimum 2 character must to work functionality)\n//Here jQuery does not have 'minlength' so we can use 'attr' for it and for all attributes that jQuery does not have\ncy.get('input[name=\"name\"]:nth-child(2)').should('have.attr', 'minlength', 2); //Validating if the radio button is disabled or not\ncy.get('#inlineRadio3').should('be.disabled'); //The script will pause at this point. It is like puting a page break in Selenium for debugging\n//we can use \"\".debug\" also at the end of a syntax. That also works as 'pause'\n//once problem is solved then this 'pause' should be deleted otherwise everytime it will pause here\n////cy.pause()\n//Clicking on Shop\ncy.get(':nth-child(2) > .nav-link').click(); ////This is the hard coding way to work. We are not gonna hard code\n////we will make a custom command in \"support/command\" and will call it. It is shown below from line 65\n/*\n    //Validating to click on add button of Blackbery mobile\n    cy.get('h4.card-title').each(($el, index, $list) => {\n\n      if($el.text().includes('Blackberry')){\n\n        //if class value has space in between then use . instead of space to locate by that elelent\n        cy.get('button.btn.btn-info').eq(index).click()\n\n      }\n    })\n*/\n//We are using customed command for above group commented task\n//pls see the support/command for customed method created over there\n////cy.selectProduct('Blackberry')\n////cy.selectProduct('Nokia Edge')\n//Instead of writing multiple lines we can put the data in example file and drive the data from there\n//Here I am using [\"abc,\"\"xyz\"] and call that in test case to apply that array\n//Array for JS to get data\nthis.data.productName.forEach(function (element) {\n  cy.log(element); //Passing the data in the below syntax\n  cy.selectProduct(element);\n});",
+              "code": "cy.visit(\"http://www.webdriveruniversity.com\");\ncy.get('#file-upload').invoke('removeAttr', 'target').click({\n  force: true\n});\ncy.get(\"#submit-button\").click();",
               "err": {},
-              "uuid": "eed34372-d674-4be2-8fa0-931e265732cc",
-              "parentUUID": "9d9ffc5b-2062-45e5-84de-ff5ddafd9faf",
+              "uuid": "3459e2f5-98f5-4664-93cf-bbcb08a7f6fb",
+              "parentUUID": "c52505c7-6c58-4920-aec4-826c47f113d1",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "eed34372-d674-4be2-8fa0-931e265732cc"
+            "3459e2f5-98f5-4664-93cf-bbcb08a7f6fb"
           ],
-          "failures": [],
+          "failures": [
+            "2038ea15-3f4d-407d-a2a5-fb5fc89288e7"
+          ],
           "pending": [],
           "skipped": [],
-          "duration": 4496,
+          "duration": 1396,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
